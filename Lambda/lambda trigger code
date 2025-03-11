@@ -14,19 +14,20 @@ exports.handler = function(event, context, callback) {
    console.log(s3message);
    var eParams = {
       Destination: {
-         ToAddresses: ["xxxxxxxxx12@gmail.com"]
+         ToAddresses: ["achidubema@gmail.com", "onyibe@gmail.com", "freddyibe05@gmail.com"]
       },
       Message: {
          Body: {
             Text: {
                Data:s3message
+               'you guys are fools'
             }
          },
          Subject: {
-            Data: "cloudtrail logs"
+            Data: "cloudtrail logs, fuck u mouctar"
          }
       },
-      Source: "xxxxxxxxx12@gmail.com"
+      Source: "achidubema@gmail.com"
    };
    var email = ses.sendEmail(eParams, function(err, data) {
       if (err) console.log(err);
