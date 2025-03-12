@@ -19,7 +19,7 @@ exports.handler = function(event, context, callback) {
       Message: {
          Body: {
             Text: {
-               Data:s3message
+               Data: `Fuck u Mouctar, you thought I ran out of time huh?\n\n${s3message}`
             }
          },
          Subject: {
@@ -29,14 +29,13 @@ exports.handler = function(event, context, callback) {
       Source: "achidubema@gmail.com"
    };
    var email = ses.sendEmail(eParams, function(err, data) {
-      if (err) {
-         console.error("SES ERROR:", err);
-         callback(err); // Properly return the error
-      } else {
+      if (err) console.log(err);
+      else {
          console.log("===EMAIL SENT===");
          console.log("EMAIL CODE END");
-         console.log('EMAIL Response:', data);
-         callback(null, "email sent successfully");
+         console.log('EMAIL: ', email);
+         context.succeed(event);
+         callback(null, "email is send");
       }
-   }
    });
+};
